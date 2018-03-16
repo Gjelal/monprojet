@@ -1,11 +1,13 @@
+package ch.hesge.livre;
+
 import java.util.*;
 
 /**
- * Module 633.1-Programmation - Contrôle continu du 19.11.2016
+ * Module 633.1-Programmation - Contrï¿½le continu du 19.11.2016
  * 
- * Classe représentant un livre.
+ * Classe reprï¿½sentant un livre.
  *
- * Vous n'avez pas le droit modifier ni les signatures de méthodes ni 
+ * Vous n'avez pas le droit modifier ni les signatures de mï¿½thodes ni 
  * les types et noms des variables.
  *
  * NOM:							POSTE:
@@ -15,8 +17,8 @@ public class Livre {
 	private String titre;    /* Titre du livre */
 	private String auteur;   /* Nom de l'auteur du livre */
 	private String date;     /* Date de publication */
-	private boolean isAnnee; /* true si la précision est l'année, false si la précision est le siècle */
-	private String genre;    /* Genre littéraire */
+	private boolean isAnnee; /* true si la prï¿½cision est l'annï¿½e, false si la prï¿½cision est le siï¿½cle */
+	private String genre;    /* Genre littï¿½raire */
 	private ArrayList pays;  /* Liste des pays du livre */
 
   public Livre (String titre, String auteur, String date, boolean isAnnee, String genre, ArrayList pays) {
@@ -27,15 +29,14 @@ public class Livre {
       contrainte suivante:
       - Le titre du livre CONTIENT le String titre                   OU
       - Le nom de l'auteur du livre CONTIENT le String auteur        OU
-      - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
+      - La liste des pays du livre contient un pays COMMENï¿½ANT PAR le String pays   */
 	public boolean correspond (String titre, String auteur, String pays) {
     if (this.titre.equals(titre) || this.auteur.equals(auteur) || this.pays.contains(pays)) { return true;}
     return false;
 	} // correspond
 	
   public String toString() { 
-    return titre + " de " + auteur + "\n  " + (isAnnee ? "Année " : "Siècle") + date + "\n  " + genre + "\n  " + pays;
+    return titre + " de " + auteur + "\n  " + (isAnnee ? "Annï¿½e " : "Siï¿½cle") + date + "\n  " + genre + "\n  " + pays;
   } // toString
 
 } // Livre
-aaa
