@@ -1,15 +1,7 @@
+import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
 
-/**
- * Module 633.1-Programmation - Contrôle continu du 19.11.2016
- * 
- * Gestion de la liste des livres (fichier de données: "100livres.csv")
- *
- * Vous n'avez pas le droit modifier ni les signatures de méthodes ni 
- * les types et noms des variables.
- *
- * NOM:							POSTE:
- */
 public class CentLivresDao {
 
   /** Valeurs possibles du champ "Précision" du fichier de données */
@@ -23,28 +15,13 @@ public class CentLivresDao {
   /** Lit la liste des livres depuis le fichier de données et charge les livres
       dans l'ArrayList "listeLivres". */
   public static void chargerLivres () {
-		StringTokenizer strLigne = new StringTokenizer(NOM_FICHIER, "\r\n");
-    strLigne.nextToken();
-    while (strLigne.hasMoreTokens()) {
-      chargerLivreDansLst(strLigne.nextToken());
+		StringTokenizer stLig = new StringTokenizer(FileToStr.read(NOM_FICHIER), "\r\n");
+    stLig.nextToken(); /* Ignorer la ligne de titre */
+    while (stLig.hasMoreTokens()) {
+      StringTokenizer sT = new StringTokenizer(stLig.nextToken(), ";");
+      listeLivres.add(new Livre(sT.nextToken(), sT.nextToken(), sT.nextToken(), sT.nextToken().equals(PRECISION_ANNEE), sT.nextToken(), sT.nextToken()));
     }
 	} // chargerLivres
-
-  public static void chargerLivreDansLst(String str) {
-    StringTokenizer strL = new StringTokenizer (str, ";");
-    String titre = strL.nextToken();
-    String auteur = strL.nextToken();
-    String date = strL.nextToken();
-    boolean isAnnee = true;
-    ArrayList pays = new ArrayList();
-    if (strL.nextToken().equals(PRECISION_SIECLE)) { isAnnee = false;}
-    String genre = strL.nextToken();
-    StringTokenizer strPays = new StringTokenizer (strL.nextToken(), "/");
-    while (strL.hasMoreTokens()) {
-      pays.add(strL.nextToken());
-    }
-    listeLivres.add(new Livre(titre, auteur, date, isAnnee, genre, pays));
-  } // chargerLivreDansLst
 	
 	/** Retourne une ArrayList contenant la liste de tous les livres qui satisfont la
       contrainte suivante:
@@ -52,14 +29,12 @@ public class CentLivresDao {
       - Le nom de l'auteur du livre CONTIENT le String auteur        OU
       - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
 	public static ArrayList filtrer (String titre, String auteur, String pays) {
-    ArrayList lst = new ArrayList();
-    for (int i = 0;i<listeLivres.size(); i++) {
-      Livre l = (Livre)listeLivres.get(i);
-      if (l.correspond(titre, auteur, pays)) {lst.add(l);}}
+		ArrayList res = new ArrayList();
+    for (int k = 0; k < listeLivres.size(); k++) {
+      Livre livre = (Livre)listeLivres.get(k);
+      if (livre.correspond(titre, auteur, pays)) {res.add(livre);}
     }
-    return lst;
+		return res;
 	} // filtrer   
-
-  /*** À COMPLÉTER SI NÉCESSAIRE ***/  	
 
 } // CentLivresDao
