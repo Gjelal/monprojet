@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.aoache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>ch.hesge.integrationcontinue</groupId>
-   	<artifactId>monprojet</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<build>
-   	 <plugins>
-      		<plugin>
-      		  <groupId>org.apache.maven.plugins</groupId>
-       			 <artifactId>maven-jar-plugin</artifactId>
-       		<configuration>
-         		 <archive>
-           			 <manifest>
-             	 			<addClasspath>true</addClasspath>
-            			</manifest>
-         	 	</archive>
-       	        </configuration>
-      		</plugin>
-    	</plugins>
-  </build>
-
-
+         xsi:schemaLocation="http://maven.aoache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.hesge.integrationcontinue</groupId>
+    <artifactId>monprojet</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>src/main/ressources/META-INF/MANIFEST.MF</manifestFile>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>CentLivres</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
