@@ -15,11 +15,12 @@ public class CentLivresDao {
   /** Lit la liste des livres depuis le fichier de données et charge les livres
       dans l'ArrayList "listeLivres". */
   public static void chargerLivres () {
-		StringTokenizer stLig = new StringTokenizer("Bonjour"/*FileToStr.read(NOM_FICHIER)*/, "\r\n");
+		StringTokenizer stLig = new StringTokenizer(/*FileToStr.read(NOM_FICHIER)*/"slt", "\r\n");
     stLig.nextToken(); /* Ignorer la ligne de titre */
     while (stLig.hasMoreTokens()) {
       StringTokenizer sT = new StringTokenizer(stLig.nextToken(), ";");
       listeLivres.add(new Livre(sT.nextToken(), sT.nextToken(), sT.nextToken(), sT.nextToken().equals(PRECISION_ANNEE), sT.nextToken(), sT.nextToken()));
+      
     }
 	} // chargerLivres
 	
