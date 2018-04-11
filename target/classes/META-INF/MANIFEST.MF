@@ -1,0 +1,1 @@
+Main-Class: ch.hesge.monprojet-0.0.1-SNAPSHOT.CentLivres

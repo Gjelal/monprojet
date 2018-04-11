@@ -43,6 +43,15 @@ public class CentLivres {
     tfTitre.addTextListener(tL); tfAuteur.addTextListener(tL); tfPays.addTextListener(tL); 
   } // definirListeners
 
+  private static void afficherPropEtVersion() {
+    try (InputStream stream = new FileInputStream("application.properties")) {
+      properties.load(stream);
+      String version = properties.getProperty("application.version");
+     } catch (Exception e) {
+      System.out.println("Fichiers introuvables");
+     }
+  }
+
 	public static void main (String[] args){
     CentLivresDao.chargerLivres();
     frm = new Frame(TITRE_FRAME);
@@ -58,6 +67,7 @@ public class CentLivres {
     frm.add(taResult); taResult.setEditable(false);
     definirListeners();
     frm.setVisible(true);
+    afficherPropEtVersion();
 	} // main
 
 } // CentLivres
