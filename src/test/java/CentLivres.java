@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -52,7 +53,7 @@ public class CentLivres {
      }
   }*/
 
-	public static void main (String[] args){
+	public static void main (String[] args) throws IOException{
     CentLivresDao.chargerLivres();
     frm = new Frame(TITRE_FRAME);
     frm.setSize(500, 400);
