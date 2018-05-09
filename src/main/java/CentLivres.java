@@ -1,5 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 
@@ -43,16 +46,16 @@ public class CentLivres {
     tfTitre.addTextListener(tL); tfAuteur.addTextListener(tL); tfPays.addTextListener(tL); 
   } // definirListeners
 
-  private static void afficherPropEtVersion() {
+  /*private static void afficherPropEtVersion() {
     try (InputStream stream = new FileInputStream("application.properties")) {
       properties.load(stream);
       String version = properties.getProperty("application.version");
      } catch (Exception e) {
       System.out.println("Fichiers introuvables");
      }
-  }
+  }*/
 
-	public static void main (String[] args){
+	public static void main (String[] args) throws IOException{
     CentLivresDao.chargerLivres();
     frm = new Frame(TITRE_FRAME);
     frm.setSize(500, 400);
@@ -67,7 +70,7 @@ public class CentLivres {
     frm.add(taResult); taResult.setEditable(false);
     definirListeners();
     frm.setVisible(true);
-    afficherPropEtVersion();
+    //afficherPropEtVersion();
 	} // main
 
 } // CentLivres

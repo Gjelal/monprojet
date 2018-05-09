@@ -1,28 +1,31 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CentLivresDao {
 
   /** Valeurs possibles du champ "Précision" du fichier de données */
   public static final String PRECISION_ANNEE = "Année";   /* La précision est l'année */
   public static final String PRECISION_SIECLE = "Siècle"; /* La précision est le siècle */
-
-  private static final String NOM_FICHIER = "100livres.csv"; /* Nom du fichier de données */
+  
+  private static final String NOM_FICHIER = "./src/main/resources/100livres.csv"; /* Nom du fichier de données */
 
   private static ArrayList listeLivres = new ArrayList(); /* Liste des livres */
 
   /** Lit la liste des livres depuis le fichier de données et charge les livres
       dans l'ArrayList "listeLivres". */
-  public static void chargerLivres () {
-		StringTokenizer stLig = new StringTokenizer(FileToStr.read(NOM_FICHIER), "\r\n");
+  public static void chargerLivres () throws IOException {
+     StringTokenizer stLig = new StringTokenizer(FileToStr.read(NOM_FICHIER), "\r\n");
     stLig.nextToken(); /* Ignorer la ligne de titre */
     while (stLig.hasMoreTokens()) {
       StringTokenizer sT = new StringTokenizer(stLig.nextToken(), ";");
       listeLivres.add(new Livre(sT.nextToken(), sT.nextToken(), sT.nextToken(), sT.nextToken().equals(PRECISION_ANNEE), sT.nextToken(), sT.nextToken()));
-      
     }
-	} // chargerLivres
+} // chargerLivres
 	
 	/** Retourne une ArrayList contenant la liste de tous les livres qui satisfont la
       contrainte suivante:
