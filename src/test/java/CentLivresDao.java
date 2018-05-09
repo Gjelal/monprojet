@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.*;
 
 public class CentLivresDao {
@@ -8,14 +9,14 @@ public class CentLivresDao {
   public static final String PRECISION_ANNEE = "Année";   /* La précision est l'année */
   public static final String PRECISION_SIECLE = "Siècle"; /* La précision est le siècle */
 
-  private static final String NOM_FICHIER = "100livres.csv"; /* Nom du fichier de données */
+  private static final String NOM_FICHIER = "./src/test/resources/100livres.csv"; /* Nom du fichier de données */
 
   private static ArrayList listeLivres = new ArrayList(); /* Liste des livres */
 
   /** Lit la liste des livres depuis le fichier de données et charge les livres
       dans l'ArrayList "listeLivres". */
-  public static void chargerLivres () {
-		StringTokenizer stLig = new StringTokenizer("Slt"/*FileToStr.read(NOM_FICHIER)*/, "\r\n");
+  public static void chargerLivres () throws IOException {
+		StringTokenizer stLig = new StringTokenizer(FileToStr.read(NOM_FICHIER), "\r\n");
     stLig.nextToken(); /* Ignorer la ligne de titre */
     while (stLig.hasMoreTokens()) {
       StringTokenizer sT = new StringTokenizer(stLig.nextToken(), ";");
