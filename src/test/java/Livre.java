@@ -28,7 +28,7 @@ public class Livre {
     pays = new ArrayList();
     StringTokenizer sT = new StringTokenizer(lesPays, "/"); while (sT.hasMoreTokens()) {pays.add(sT.nextToken());}
   } // Constructeur
-
+  
   /* Retourne true ssi la liste des pays contient un pays commençant par p */
   private boolean paysContient (String p) {
     for (int k = 0; k < pays.size(); k++) {
@@ -42,11 +42,11 @@ public class Livre {
       - Le titre du livre CONTIENT le String titre                   OU
       - Le nom de l'auteur du livre CONTIENT le String auteur        OU
       - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
-	public boolean correspond (String titre, String auteur, String pays) {
-		return (!titre.isEmpty() && this.titre.toLowerCase().contains(titre.toLowerCase())) ||
-           (!auteur.isEmpty() && this.auteur.toLowerCase().contains(auteur.toLowerCase())) || 
-           (!pays.isEmpty() && paysContient(pays.toLowerCase()));
-	} // correspond
+    public boolean correspond (String titre, String auteur, String pays) {
+        return (!titre.isEmpty() && this.titre.toLowerCase().contains(titre.toLowerCase())) ||
+               (!auteur.isEmpty() && this.auteur.toLowerCase().contains(auteur.toLowerCase())) || 
+               (!pays.isEmpty() && paysContient(pays.toLowerCase()));
+    } // correspond
 
   public String toString() { 
     return titre + " de " + auteur + "\n  " + (isAnnee ? "Année " : "Siècle") + date + "\n  " + genre + "\n  " + pays;

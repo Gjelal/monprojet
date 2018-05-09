@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.*;
+import org.testng.annotations.Test;
 
 
 public class CentLivres {
@@ -23,6 +24,7 @@ public class CentLivres {
   private static Label lblResult = new Label(TXT_RESULT);
   private static TextArea taResult = new TextArea(17, 50);
 
+  //@Test | Cette méthode affichera un string contenant tous les livres recherché selon un filtre, je ne sais pas quoi tester
   private static void afficherResultatFiltre () {
     ArrayList res = CentLivresDao.filtrer(tfTitre.getText(), tfAuteur.getText(), tfPays.getText());
     lblResult.setText((res.size() == 0) ? TXT_RESULT : res.size() + " résultats");
@@ -32,7 +34,8 @@ public class CentLivres {
     }
     taResult.setText(str);
   } // afficherResultatFiltre
-
+  
+  //@Test | Je ne sais pas comment tester si ça ajoute des listeners ou pas
   private static void definirListeners () {
     frm.addWindowListener(new WindowAdapter() {
       public void windowClosed (WindowEvent e) {System.exit(0);}
@@ -53,7 +56,7 @@ public class CentLivres {
      }
   }*/
 
-	public static void main (String[] args) throws IOException{
+   public static void main (String[] args) throws IOException{
     CentLivresDao.chargerLivres();
     frm = new Frame(TITRE_FRAME);
     frm.setSize(500, 400);
@@ -69,6 +72,6 @@ public class CentLivres {
     definirListeners();
     frm.setVisible(true);
     //afficherPropEtVersion();
-	} // main
+   } // main
 
 } // CentLivres
