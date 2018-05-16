@@ -1,55 +1,53 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-/**
- * Module 633.1-Programmation - Contrôle continu du 19.11.2016
- * 
- * Classe représentant un livre.
- *
- * Vous n'avez pas le droit modifier ni les signatures de méthodes ni 
- * les types et noms des variables.
- *
- * @author Peter Daehne - HEG Genève
- * @version 1.0
- */
-public class Livre {
 
-	private String titre;    /* Titre du livre */
-	private String auteur;   /* Nom de l'auteur du livre */
-	private String date;     /* Date de publication */
-	private boolean isAnnee; /* true si la précision est l'année, false si la précision est le siècle */
-	private String genre;    /* Genre littéraire */
-	private ArrayList pays;  /* Liste des pays du livre */
-
-  /** Constructeur */
-  public Livre (String titre, String auteur, String date, boolean isAnnee, String genre, String lesPays) {
-    this.titre = titre; this.auteur = auteur; this.date = date; this.isAnnee = isAnnee; this.genre = genre;
-    pays = new ArrayList();
-    StringTokenizer sT = new StringTokenizer(lesPays, "/"); while (sT.hasMoreTokens()) {pays.add(sT.nextToken());}
-  } // Constructeur
+public class LivreTest {
+    
+    Livre livre1, livre2;
   
-  /* Retourne true ssi la liste des pays contient un pays commençant par p */
-  private boolean paysContient (String p) {
-    for (int k = 0; k < pays.size(); k++) {
-      if (((String)pays.get(k)).toLowerCase().startsWith(p)) {return true;}
+  @Test
+    public void testCompareToEquals(){
+        livre1 = new Livre("Salut","Gjelal","1995", true ,"tata", "Suisse");
+        livre2 = new Livre("Salut","Gjelal","1995", true ,"tata", "Suisse");
+        Assert.assertEquals(livre1.compareTo(livre2),0);
     }
-    return false;
-  } // paysContient
-
-	/** Retourne true SI ET SEULEMENT SI le livre satisfait la
-      contrainte suivante:
-      - Le titre du livre CONTIENT le String titre                   OU
-      - Le nom de l'auteur du livre CONTIENT le String auteur        OU
-      - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
-    public boolean correspond (String titre, String auteur, String pays) {
-        return (!titre.isEmpty() && this.titre.toLowerCase().contains(titre.toLowerCase())) ||
-               (!auteur.isEmpty() && this.auteur.toLowerCase().contains(auteur.toLowerCase())) || 
-               (!pays.isEmpty() && paysContient(pays.toLowerCase()));
-    } // correspond
-
-  public String toString() { 
-    return titre + " de " + auteur + "\n  " + (isAnnee ? "Année " : "Siècle") + date + "\n  " + genre + "\n  " + pays;
-  } // toString
-
+    
+    @Test
+    public void testCompareToPlusGrandL1L2(){
+        livre1 = new Livre("Salut","Gjelal","1996", true ,"tata", "Suisse");
+        livre2 = new Livre("Salut","Gjelal","1995", true ,"tata", "Suisse");
+        Assert.assertTrue(livre1.compareTo(livre2) > 0);
+    }
+    
+    @Test
+    public void testCompareToPlusGrandL2L1(){
+        livre1 = new Livre("Salut","Gjelal","1996", true ,"tata", "Suisse");
+        livre2 = new Livre("Salut","Gjelal","1997", true ,"tata", "Suisse");
+        Assert.assertTrue(livre1.compareTo(livre2) < 0);
+    }
+    
+    @Test
+    public void testContientPaysTrue(){
+      livre2 = new Livre("Salut","Gjelal","1997", true ,"tata", "Suisse");
+      Assert.assertTrue(livre2.paysContient("Suisse") == true);
+    }
+    
+    @Test
+    public void testContientPaysFalse(){
+      livre2 = new Livre("Salut", "Gjelal", "1997", true ,"tata", "Suisse");
+      Assert.assertTrue(livre2.paysContient("France") == false);
+    }
+    
+    public void testCorrespondLivreTrue() {
+        Assert.assertTrue(livre2.correspond("Salut", "Gjelal", "Inconnu") == true);
+    }
+    
+    public void testCorrespondLivreFalse() {
+        Assert.assertTrue(livre2.correspond("Tak", "Tik", "Inconnu") == false);
+    }
+    
 } // Livre

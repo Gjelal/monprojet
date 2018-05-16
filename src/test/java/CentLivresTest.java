@@ -5,7 +5,7 @@ import java.util.*;
 import org.testng.annotations.Test;
 
 
-public class CentLivres {
+public class CentLivresTest {
 
   private static final String TITRE_FRAME = "100 Livres";
   private static final String TXT_TITRE = "Titre: ";

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import org.testng.annotations.Test;
 
-public class CentLivresDao {
+public class CentLivresDaoTest {
 
   /** Valeurs possibles du champ "Précision" du fichier de données */
   public static final String PRECISION_ANNEE = "Année";   /* La précision est l'année */

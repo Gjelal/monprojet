@@ -20,25 +20,25 @@ public class CentLivresDao {
       dans l'ArrayList "listeLivres". */
   public static void chargerLivres () throws IOException {
      StringTokenizer stLig = new StringTokenizer(FileToStr.read(NOM_FICHIER), "\r\n");
-    stLig.nextToken(); /* Ignorer la ligne de titre */
-    while (stLig.hasMoreTokens()) {
+     stLig.nextToken(); /* Ignorer la ligne de titre */
+     while (stLig.hasMoreTokens()) {
       StringTokenizer sT = new StringTokenizer(stLig.nextToken(), ";");
       listeLivres.add(new Livre(sT.nextToken(), sT.nextToken(), sT.nextToken(), sT.nextToken().equals(PRECISION_ANNEE), sT.nextToken(), sT.nextToken()));
     }
 } // chargerLivres
 	
-	/** Retourne une ArrayList contenant la liste de tous les livres qui satisfont la
-      contrainte suivante:
-      - Le titre du livre CONTIENT le String titre                   OU
-      - Le nom de l'auteur du livre CONTIENT le String auteur        OU
-      - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
-	public static ArrayList filtrer (String titre, String auteur, String pays) {
-		ArrayList res = new ArrayList();
-    for (int k = 0; k < listeLivres.size(); k++) {
-      Livre livre = (Livre)listeLivres.get(k);
-      if (livre.correspond(titre, auteur, pays)) {res.add(livre);}
-    }
-		return res;
-	} // filtrer   
+/** Retourne une ArrayList contenant la liste de tous les livres qui satisfont la
+  contrainte suivante:
+  - Le titre du livre CONTIENT le String titre                   OU
+  - Le nom de l'auteur du livre CONTIENT le String auteur        OU
+  - La liste des pays du livre contient un pays COMMENÇANT PAR le String pays   */
+    public static ArrayList filtrer (String titre, String auteur, String pays) {
+        ArrayList res = new ArrayList();
+        for (int k = 0; k < listeLivres.size(); k++) {
+          Livre livre = (Livre)listeLivres.get(k);
+          if (livre.correspond(titre, auteur, pays)) {res.add(livre);}
+        }
+        return res;
+    } // filtrer   
 
 } // CentLivresDao

@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * @author Gjelal-pc
  */
-public class FileToStr {
+public class FileToStrTest {
     public static String read(String file) throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader (file));
         String line = null;
