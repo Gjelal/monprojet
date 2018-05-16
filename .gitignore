@@ -1,4 +1,8 @@
-.bak
-.idea
+.DS_Store
+*.class
+*.bak
+/out
+/target
+/.idea
 *.iml
-*./target
+settings.xml
