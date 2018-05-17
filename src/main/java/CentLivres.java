@@ -7,10 +7,12 @@ import java.util.*;
 
 
 public class CentLivres {
+    
+  private static Frame frm;
 
   public static void main (String[] args) throws IOException{
     CentLivresDao.chargerLivres();
-    Frame frm = FrameLivre.getFrame();
+    frm = FrameLivre.getFrame();
     frm.setVisible(true);
     } // main
 

@@ -35,8 +35,8 @@ public class FrameLivre {
   private static Label lblResult = new Label(TXT_RESULT);
   private static TextArea taResult = new TextArea(17, 50);
   
-  
-  private static void afficherResultatFiltre () {
+      
+    private static void afficherResultatFiltre () {
     ArrayList res = CentLivresDao.filtrer(tfTitre.getText(), tfAuteur.getText(), tfPays.getText());
     lblResult.setText((res.size() == 0) ? TXT_RESULT : res.size() + " résultats");
     String str = "";
@@ -45,9 +45,8 @@ public class FrameLivre {
     }
     taResult.setText(str);
   } // afficherResultatFiltre
-  
-  
-  private static void definirListeners () {
+    
+    private static void definirListeners () {
     frm.addWindowListener(new WindowAdapter() {
       public void windowClosed (WindowEvent e) {System.exit(0);}
       public void windowClosing (WindowEvent e) {frm.dispose();}
@@ -57,7 +56,7 @@ public class FrameLivre {
     };
     tfTitre.addTextListener(tL); tfAuteur.addTextListener(tL); tfPays.addTextListener(tL); 
   } // definirListeners
-    
+
     public static Frame getFrame () {
     frm = new Frame(TITRE_FRAME);
     frm.setSize(500, 400);

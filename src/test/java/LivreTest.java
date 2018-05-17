@@ -33,13 +33,13 @@ public class LivreTest {
     @Test
     public void testContientPaysTrue(){
       livre2 = new Livre("Salut","Gjelal","1997", true ,"tata", "Suisse");
-      Assert.assertTrue(livre2.paysContient("Suisse") == true);
+      Assert.assertFalse(livre2.paysContient("Suisse"));
     }
     
     @Test
     public void testContientPaysFalse(){
       livre2 = new Livre("Salut", "Gjelal", "1997", true ,"tata", "Suisse");
-      Assert.assertTrue(livre2.paysContient("France") == false);
+      Assert.assertFalse(livre2.paysContient("France"));
     }
     
     public void testCorrespondLivreTrue() {
