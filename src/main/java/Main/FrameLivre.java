@@ -1,3 +1,5 @@
+package Main;
+
 
 import java.awt.FlowLayout;
 import java.awt.Frame;

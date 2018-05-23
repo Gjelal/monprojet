@@ -1,3 +1,6 @@
+package Test;
+
+import Main.CentLivresDao;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
